@@ -14,10 +14,6 @@ let business = {
 };
 
 class Business extends Component {
-  constructor() {
-
-  }
-
   render() {
     return (
       <div className="Business">

@@ -43,7 +43,14 @@ class SearchBar extends Component {
   }
 
   handleSearch(event) {
-    this.props.searchYelp(this.state.term, this.state.location, this.state.sortBy);
+    document.getElementById('where').style.border = '';
+    if(this.state.location === '') {
+      document.getElementById('where').style.border = ' 2px solid red';
+      document.getElementById('where').placeholder = 'Choose a location';
+    }
+    else {
+      this.props.searchYelp(this.state.term, this.state.location, this.state.sortBy);
+    }
     event.preventDefault();
   }
 
@@ -64,7 +71,7 @@ class SearchBar extends Component {
         </div>
         <div className="SearchBar-fields">
           <input placeholder="Search Businesses" onChange={this.handleTermChange}/>
-          <input placeholder="Where?" onChange={this.handleLocationChange}/>
+          <input placeholder="Where?" onChange={this.handleLocationChange} id="where"/>
         </div>
         <div className="SearchBar-submit">
           <a onClick={this.handleSearch}>Let's Go</a>
